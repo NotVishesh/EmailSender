@@ -9,165 +9,28 @@
     <tr>
       <td align="center" style="padding:22px 10px;">
 
-        <!-- ═══════════════════════════════════════════════
-             OUTER CARD — change background, border-radius etc. here
-        ════════════════════════════════════════════════ -->
+        <!-- ── Outer card shell ─────────────────────────────────────────── -->
         <table role="presentation" width="640" cellpadding="0" cellspacing="0"
                style="width:640px;max-width:100%;background:#fffefa;border-radius:38px;
                       overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.08);">
           <tr>
             <td style="padding:22px 30px 30px;">
 
+              <!-- ── Cards injected here by send.js from content.json ───── -->
+              {{CARDS}}
 
-              <!-- ═══════════════════ CARD 1 — Hii ═══════════════════ -->
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
-                     style="margin:0 0 22px;border-radius:30px;background:#e8f5ff;overflow:hidden;">
-                <tr>
-                  <!-- Avatar LEFT -->
-                  <td width="42%" style="vertical-align:bottom;">
-                    <img src="cid:avatar-1.png" width="205" alt=""
-                         style="display:block;width:205px;max-width:100%;height:auto;border:0;" />
-                  </td>
-                  <!-- Text RIGHT -->
-                  <td style="padding:24px 16px 20px;font-family:Arial,sans-serif;vertical-align:middle;">
-                    <div style="font-family:cursive;font-size:27px;line-height:1.15;font-weight:700;color:#1d4f91;">
-                      1.  Hii,
-                    </div>
-                    <p style="margin:13px 0 0;font-size:17px;line-height:1.5;color:#171717;">
-                      Let me introduce myself. I'm Vishe, a passionate and curious developer.
-                    </p>
-                  </td>
-                </tr>
-              </table>
-              <!-- ════════════════════════════════════════════════════ -->
+              <!-- ── Attachments section (only shown if files exist) ──────── -->
+              {{ATTACHMENTS_SECTION}}
 
-
-              <!-- ═══════════════════ CARD 2 — Looking For ═══════════ -->
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
-                     style="margin:0 0 22px;border-radius:30px;background:#fff4dc;overflow:hidden;">
-                <tr>
-                  <!-- Text LEFT -->
-                  <td style="padding:24px 16px 20px;font-family:Arial,sans-serif;vertical-align:middle;">
-                    <div style="font-family:cursive;font-size:27px;line-height:1.15;font-weight:700;color:#1d4f91;">
-                      2. Looking For,
-                    </div>
-                    <p style="margin:13px 0 0;font-size:17px;line-height:1.5;color:#171717;">
-                      I'm looking for an opportunity where I can contribute, learn and grow with a team.
-                    </p>
-                  </td>
-                  <!-- Avatar RIGHT -->
-                  <td width="42%" style="vertical-align:bottom;text-align:right;">
-                    <img src="cid:avatar-2.png" width="205" alt=""
-                         style="display:block;width:205px;max-width:100%;height:auto;border:0;" />
-                  </td>
-                </tr>
-              </table>
-              <!-- ════════════════════════════════════════════════════ -->
-
-
-              <!-- ═══════════════════ CARD 3 — My Experience ════════════ -->
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
-                     style="margin:0 0 22px;border-radius:30px;background:#eaf9f1;overflow:hidden;">
-                <tr>
-                  <!-- Avatar LEFT -->
-                  <td width="42%" style="vertical-align:bottom;">
-                    <img src="cid:avatar-3.png" width="205" alt=""
-                         style="display:block;width:205px;max-width:100%;height:auto;border:0;" />
-                  </td>
-                  <!-- Text RIGHT -->
-                  <td style="padding:24px 16px 20px;font-family:Arial,sans-serif;vertical-align:middle;">
-                    <div style="font-family:cursive;font-size:27px;line-height:1.15;font-weight:700;color:#1d4f91;">
-                      3. My Experience,
-                    </div>
-                    <p style="margin:13px 0 0;font-size:17px;line-height:1.5;color:#171717;">
-                      I have hands-on experience in building projects and working on real-world problems.
-                    </p>
-                  </td>
-                </tr>
-              </table>
-              <!-- ════════════════════════════════════════════════════ -->
-
-
-              <!-- ═══════════════════ CARD 4 — My Skills ════════════ -->
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
-                     style="margin:0 0 22px;border-radius:30px;background:#fff0f5;overflow:hidden;">
-                <tr>
-                  <!-- Text LEFT -->
-                  <td style="padding:24px 16px 20px;font-family:Arial,sans-serif;vertical-align:middle;">
-                    <div style="font-family:cursive;font-size:27px;line-height:1.15;font-weight:700;color:#1d4f91;">
-                      4. My Skills,
-                    </div>
-                    <p style="margin:13px 0 0;font-size:17px;line-height:1.5;color:#171717;">
-                      Here are some of the technologies and tools I'm comfortable with.
-                    </p>
-                  </td>
-                  <!-- Avatar RIGHT -->
-                  <td width="42%" style="vertical-align:bottom;text-align:right;">
-                    <img src="cid:avatar-4.png" width="205" alt=""
-                         style="display:block;width:205px;max-width:100%;height:auto;border:0;" />
-                  </td>
-                </tr>
-              </table>
-              <!-- ════════════════════════════════════════════════════ -->
-
-
-              <!-- ═══════════════════ CARD 5 — Availability ════════ -->
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
-                     style="margin:0 0 22px;border-radius:30px;background:#f3edff;overflow:hidden;">
-                <tr>
-                  <!-- Avatar LEFT -->
-                  <td width="42%" style="vertical-align:bottom;">
-                    <img src="cid:avatar-5.png" width="205" alt=""
-                         style="display:block;width:205px;max-width:100%;height:auto;border:0;" />
-                  </td>
-                  <!-- Text RIGHT -->
-                  <td style="padding:24px 16px 20px;font-family:Arial,sans-serif;vertical-align:middle;">
-                    <div style="font-family:cursive;font-size:27px;line-height:1.15;font-weight:700;color:#1d4f91;">
-                      5. When I'm Looking For,
-                    </div>
-                    <p style="margin:13px 0 0;font-size:17px;line-height:1.5;color:#171717;">
-                      I'm available for opportunities starting from [Start Date]. I'm flexible and open to discussion.
-                    </p>
-                  </td>
-                </tr>
-              </table>
-              <!-- ════════════════════════════════════════════════════ -->
-
-
-              <!-- ═══════════════════ CARD 6 — Contact ════════════ -->
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
-                     style="margin:0 0 22px;border-radius:30px;background:#e8f5ff;overflow:hidden;">
-                <tr>
-                  <!-- Text LEFT -->
-                  <td style="padding:24px 16px 20px;font-family:Arial,sans-serif;vertical-align:middle;">
-                    <div style="font-family:cursive;font-size:27px;line-height:1.15;font-weight:700;color:#1d4f91;">
-                      6. Contact Info,
-                    </div>
-                    <p style="margin:13px 0 0;font-size:17px;line-height:1.5;color:#171717;">
-                      Feel free to reach out to me via email or connect with me on LinkedIn.
-                    </p>
-                  </td>
-                  <!-- Avatar RIGHT -->
-                  <td width="42%" style="vertical-align:bottom;text-align:right;">
-                    <img src="cid:avatar-6.png" width="205" alt=""
-                         style="display:block;width:205px;max-width:100%;height:auto;border:0;" />
-                  </td>
-                </tr>
-              </table>
-              <!-- ════════════════════════════════════════════════════ -->
-
-
-              <!-- ═══════════════ FOOTER — sign-off ════════════════ -->
-              <p style="margin:4px 0 0;text-align:center;font-size:15px;line-height:1.5;color:#555;">
-                Looking forward to connecting!<br>
-                <strong>Vishe</strong>
+              <!-- ── Footer ─────────────────────────────────────────────── -->
+              <p style="margin:18px 0 0;text-align:center;font-size:15px;line-height:1.7;color:#555;">
+                {{FOOTER}}
               </p>
-              <!-- ════════════════════════════════════════════════════ -->
-
 
             </td>
           </tr>
         </table>
+        <!-- ────────────────────────────────────────────────────────────── -->
 
       </td>
     </tr>

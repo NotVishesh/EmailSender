@@ -1,6 +1,10 @@
 # ── Secrets ───────────────────────────────
 .env
 
+# ── Personal data (use *.example.* versions for GitHub) ───
+content.json
+recipients.csv
+
 # ── Dependencies ──────────────────────────
 node_modules/
 

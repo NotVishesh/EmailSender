@@ -1,0 +1,85 @@
+{
+  "subject": "Application for {{role}}",
+
+  "cards": [
+    {
+      "title": "1.  Hii,",
+      "body": "Let me introduce myself. I'm [Your Name], a passionate and curious developer.",
+      "background": "#e8f5ff",
+      "avatar": "avatar-1.png",
+      "side": "left"
+    },
+    {
+      "title": "2. Looking For,",
+      "body": "I'm looking for an opportunity where I can contribute, learn and grow with a team.",
+      "background": "#fff4dc",
+      "avatar": "avatar-2.png",
+      "side": "right"
+    },
+    {
+      "title": "3. My Experience,",
+      "body": "I have hands-on experience in building projects and working on real-world problems.",
+      "background": "#eaf9f1",
+      "avatar": "avatar-3.png",
+      "side": "left"
+    },
+    {
+      "title": "4. My Skills,",
+      "body": "Here are some of the technologies and tools I'm comfortable with.",
+      "background": "#fff0f5",
+      "avatar": "avatar-4.png",
+      "side": "right"
+    },
+    {
+      "title": "5. Availability,",
+      "body": "I'm available for opportunities starting from [Start Date]. I'm flexible and open to discussion.",
+      "background": "#f3edff",
+      "avatar": "avatar-5.png",
+      "side": "left"
+    },
+    {
+      "title": "6. Contact Info,",
+      "body": "Feel free to reach out to me. I'd love to connect and have a conversation!",
+      "background": "#e8f5ff",
+      "avatar": "avatar-6.png",
+      "side": "right",
+      "links": [
+        {
+          "label": "LinkedIn",
+          "url": "https://linkedin.com/in/your-profile",
+          "color": "#0077b5"
+        },
+        {
+          "label": "GitHub",
+          "url": "https://github.com/your-username",
+          "color": "#24292e"
+        },
+        {
+          "label": "Email Me",
+          "url": "mailto:your@email.com",
+          "color": "#d44638"
+        }
+      ]
+    }
+  ],
+
+  "attachments": [
+    {
+      "label": "Resume",
+      "emoji": "📄",
+      "path": "C:\\Users\\YourName\\Documents\\Resume.pdf"
+    },
+    {
+      "label": "Cover Letter",
+      "emoji": "✉️",
+      "path": "attachments/cover-letter.pdf"
+    },
+    {
+      "label": "Letter of Recommendation",
+      "emoji": "🏅",
+      "path": "attachments/recommendation.pdf"
+    }
+  ],
+
+  "footer": "Looking forward to connecting with you!\n[Your Name]"
+}
