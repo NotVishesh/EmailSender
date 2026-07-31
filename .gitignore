@@ -1,0 +1,16 @@
+# ── Secrets ───────────────────────────────
+.env
+
+# ── Dependencies ──────────────────────────
+node_modules/
+
+# ── Assets (large image files) ────────────
+assets/
+
+# ── Logs ──────────────────────────────────
+logs/
+
+# ── OS junk ───────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
