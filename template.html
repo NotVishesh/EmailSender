@@ -2,12 +2,40 @@
 <html lang="en">
 <head>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <style>
+    /* ── Mobile: stack avatar + text vertically ── */
+    @media only screen and (max-width: 600px) {
+      .outer-pad   { padding: 10px 2px !important; }
+      .card-shell  { border-radius: 20px !important; padding: 12px 14px 16px !important; }
+
+      /* Make each card table behave like a block */
+      .card-table  { margin-bottom: 14px !important; border-radius: 18px !important; }
+
+      /* Stack the two <td>s in a row by turning them into blocks */
+      .card-avatar-cell,
+      .card-text-cell { display: block !important; width: 100% !important; box-sizing: border-box !important; }
+
+      /* Avatar: centred, smaller, no wasted side-space */
+      .card-avatar-cell { text-align: center !important; padding: 14px 0 0 !important; line-height: 0 !important; }
+      .card-avatar-cell img { width: 120px !important; height: auto !important; display: inline-block !important; }
+
+      /* Text: full width with comfortable padding */
+      .card-text-cell { padding: 12px 14px 16px !important; }
+
+      /* Slightly smaller type on mobile */
+      .card-title { font-size: 21px !important; line-height: 1.2 !important; }
+      .card-body  { font-size: 15px !important; line-height: 1.5 !important; margin-top: 10px !important; }
+
+      /* Link buttons: a touch bigger tap target */
+      .card-link  { padding: 9px 16px !important; font-size: 13px !important; }
+    }
+  </style>
 </head>
 <body style="margin:0;padding:0;background:#f6f4f1;font-family:Arial,sans-serif;">
 
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f6f4f1;">
     <tr>
-      <td align="center" style="padding:22px 10px;">
+      <td class="outer-pad" align="center" style="padding:22px 10px;">
 
         <!-- ── Outer card shell ─────────────────────────────────────────── -->
         <table role="presentation" width="640" cellpadding="0" cellspacing="0"

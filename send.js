@@ -61,14 +61,15 @@ function log(level, message) {
 function buildCardHtml(card) {
   const { title, body, background, avatar, side, links = [] } = card;
 
-  const avatarImg = `<img src="cid:${escape(avatar)}" width="205" alt=""
-    style="display:block;width:205px;max-width:100%;height:auto;border:0;" />`;
+  // Avatar always sits on top on mobile (class drives the stacking)
+  const avatarImg = `<img src="cid:${escape(avatar)}" width="180" alt=""
+    style="display:block;width:180px;max-width:100%;height:auto;border:0;" />`;
 
   // Render link buttons if any
   const linksHtml = links.length
     ? `<div style="margin-top:14px;">
         ${links.map((l) => `
-          <a href="${escape(l.url)}"
+          <a href="${escape(l.url)}" class="card-link"
              style="display:inline-block;margin:4px 6px 4px 0;padding:8px 18px;
                     border-radius:20px;background:${escape(l.color || '#1d4f91')};
                     color:#fff;font-size:14px;font-weight:600;
@@ -79,25 +80,28 @@ function buildCardHtml(card) {
     : '';
 
   const textCell = `
-    <td style="padding:24px 16px 20px;font-family:Arial,sans-serif;vertical-align:middle;">
-      <div style="font-family:cursive;font-size:27px;line-height:1.15;font-weight:700;color:#1d4f91;">
+    <td class="card-text-cell" style="padding:24px 16px 20px;font-family:Arial,sans-serif;vertical-align:middle;">
+      <div class="card-title" style="font-family:cursive;font-size:27px;line-height:1.15;font-weight:700;color:#1d4f91;">
         ${escape(title)}
       </div>
-      <p style="margin:13px 0 0;font-size:17px;line-height:1.5;color:#171717;">
+      <p class="card-body" style="margin:13px 0 0;font-size:17px;line-height:1.5;color:#171717;">
         ${escape(body)}
       </p>
       ${linksHtml}
     </td>`;
 
-  const avatarCell = `<td width="42%" style="vertical-align:bottom;">${avatarImg}</td>`;
-  const avatarCellRight = `<td width="42%" style="vertical-align:bottom;text-align:right;">${avatarImg}</td>`;
+  // On mobile, avatar always renders first (top) via display:block stacking.
+  // On desktop, side controls left/right position.
+  const avatarCell      = `<td class="card-avatar-cell" width="42%" style="vertical-align:bottom;">${avatarImg}</td>`;
+  const avatarCellRight = `<td class="card-avatar-cell" width="42%" style="vertical-align:bottom;text-align:right;">${avatarImg}</td>`;
 
+  // Desktop: respect left/right side. Mobile CSS overrides to block-stacked.
   const row = side === 'left'
     ? `${avatarCell}${textCell}`
     : `${textCell}${avatarCellRight}`;
 
   return `
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+    <table class="card-table" role="presentation" width="100%" cellpadding="0" cellspacing="0"
            style="margin:0 0 22px;border-radius:30px;background:${escape(background)};overflow:hidden;">
       <tr>${row}</tr>
     </table>`;
