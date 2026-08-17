@@ -15,9 +15,10 @@ import { parse } from 'csv-parse/sync';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // ── CLI args ──────────────────────────────────────────────────
-const args      = process.argv.slice(2);
-const DRY_RUN   = args.includes('--dry-run');
+const args       = process.argv.slice(2);
+const DRY_RUN    = args.includes('--dry-run');
 const subjectArg = args.find((a) => a.startsWith('--subject='));
+const csvArg     = args.find((a) => a.startsWith('--csv='));
 
 // ── Config from .env ──────────────────────────────────────────
 const SMTP_HOST   = process.env.SMTP_HOST    || 'smtp.gmail.com';
@@ -29,11 +30,17 @@ const DELAY_MS    = Number(process.env.SEND_DELAY_MS || 1200);
 const MAX_RETRIES = Number(process.env.MAX_RETRIES   || 2);
 
 // ── Paths ─────────────────────────────────────────────────────
-const CSV_FILE      = path.join(__dirname, 'recipients.csv');
+const CSV_FILE      = csvArg
+  ? path.resolve(csvArg.split('=').slice(1).join('='))
+  : (process.env.CSV_PATH ? path.resolve(process.env.CSV_PATH) : path.join(__dirname, 'recipients.csv'));
 const TEMPLATE_FILE = path.join(__dirname, 'template.html');
 const CONTENT_FILE  = path.join(__dirname, 'content.json');
 const ASSETS_DIR    = path.join(__dirname, 'assets');
 const LOGS_DIR      = path.join(__dirname, 'logs');
+
+// GitHub raw URL base — avatars are served from here (no email attachments)
+// ⚠️  Your GitHub repo must be PUBLIC for these URLs to load in emails
+const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/NotVishesh/EmailSender/main/public';
 const LOG_FILE      = path.join(LOGS_DIR, `send-${timestamp()}.log`);
 
 // ── Helpers ───────────────────────────────────────────────────
@@ -61,8 +68,9 @@ function log(level, message) {
 function buildCardHtml(card) {
   const { title, body, background, avatar, side, links = [] } = card;
 
-  // Avatar always sits on top on mobile (class drives the stacking)
-  const avatarImg = `<img src="cid:${escape(avatar)}" width="180" alt=""
+  // Avatar loaded via public GitHub URL — no file attachment needed
+  const avatarUrl = `${GITHUB_RAW_BASE}/${escape(avatar)}`;
+  const avatarImg = `<img src="${avatarUrl}" width="180" alt=""
     style="display:block;width:180px;max-width:100%;height:auto;border:0;" />`;
 
   // Render link buttons if any
@@ -188,16 +196,7 @@ const footerText = (content.footer || 'Looking forward to connecting!\nVishe')
   .map(escape)
   .join('<br>');
 
-// ── Load avatar CID attachments ───────────────────────────────
-const avatarAttachments = fs.existsSync(ASSETS_DIR)
-  ? fs.readdirSync(ASSETS_DIR)
-      .filter((f) => /\.(png|jpg|jpeg|gif|webp)$/i.test(f))
-      .map((filename) => ({
-        filename,
-        path: path.join(ASSETS_DIR, filename),
-        cid: filename,
-      }))
-  : [];
+// Avatars are now loaded via GitHub URL — no CID attachments needed
 
 // ── Load template and inject static parts ────────────────────
 const templateShell = fs.readFileSync(TEMPLATE_FILE, 'utf8');
@@ -269,7 +268,7 @@ async function run() {
           to: email,
           subject: personalizedSubject,
           html: personalizedHtml,
-          attachments: [...avatarAttachments, ...fileAttachments],
+          attachments: fileAttachments,   // only real docs; avatars load via URL
         });
         log('info', `✅ SENT     → ${email} | messageId: ${result.messageId}`);
         stats.sent++;
